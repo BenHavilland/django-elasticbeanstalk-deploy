@@ -118,7 +118,7 @@ class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project`
         
-ViewSets
+# ViewSets
 
 Django REST framework ViewSet or View classes (may also be known as a resource), is the fundamental concept of any RESTful API. This is where you control what your dataset is, permissions and authorization on the data, etc... will be.
 
@@ -132,7 +132,7 @@ Below is a basic DRF resource for our users and project models which inherits fr
 
 Views
 
-
+`
 from rest_framework import viewsets
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -143,14 +143,15 @@ class UserViewSet(viewsets.ModelViewSet):
 class ProjectViewSet(viewsets.ModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
-        
-Binding ViewSets to URLs via Routers
+`
+
+# Binding ViewSets to URLs via Routers
 
 Routers allows us to quickly tell Django and DRF about our new resource so that we can test it out. We can do this explicitly, or use DRF's Router class to handle a lot of the functionality automatically.
 
 In urls.py we need to put the following code to tell Django to route the url /students/ to go to our new resource.
 
-
+`
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet, base_name='users')
 router.register(r'projects', ProjectViewSet, base_name='projects')
@@ -159,38 +160,43 @@ urlpatterns = patterns("",
     ...
     url(r'^', include(router.urls)), # Include router urls into our urlpatterns
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
- )
+ )`
         
 Go to the next page to see the URLs generated.
 
 Routers (cont)
 
 The register() methods will automatically generate the following URL patterns for us:
-
+`
 URL pattern: ^users/$ Name: 'user-list'
 URL pattern: ^users/{pk}/$ Name: 'user-detail'
 URL pattern: ^projects/$ Name: 'project-list'
 URL pattern: ^projects/{pk}/$ Name: 'project-detail'
+`
+
 Visit the endpoints to see it in action!
 
 Try it out!
 
-POSTMAN
+# POSTMAN
 
 There are many ways to consume your endpoint, but let's try using POSTMAN first.
 
 If you don't have POSTMAN installed, you can install it as a chrome app here.
 
 POST a new user to the API through postman.
+
 Check that this user was created by making a GET call afterwards.
+
 GET a single project through postman.
+
 CURL
 
 You can also consume your endpoints through your terminal window. Try typing in curl http://127.0.0.1:8000/users/1/ to get the data of user with id 1.
 
 Try it out!
 
-Django Rest Framework's Browsable API
+# Django Rest Framework's Browsable API
 
 DRF's Browsable API is one of the many perks of working with DRF. It allows you to visualize the data being transferred through your API and will even allow you to make REST actions against these endpoints.
 
