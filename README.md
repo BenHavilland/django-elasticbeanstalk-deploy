@@ -94,6 +94,8 @@ Create the following api django package and empty files in the root directory of
 
 The files in our api directory that we just created will help us separate out our code. This also helps us better understand the Request and Response flow at each step as shown in the diagram below.
 
+![Image of DRF](http://www.thomaswhitton.com/django-presentation/images/432038560_9f8b830dfe_o.png)
+
 
 # Serializers
 
